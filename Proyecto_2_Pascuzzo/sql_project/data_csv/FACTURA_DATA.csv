@@ -1,0 +1,52 @@
+FECHA_DE_COMPRA,ID_PRODUCTO,CANTIDAD_PRODUCTO,ID_USER,EMAIL,NICK,TOTAL_PAGAR,MEDIO_DE_PAGO,COMPLETADO
+2023-03-24,11,1,1,vodnik@hotmail.com.es,VodnikJavier,5.99,TARJETA DEBITO,1
+2024-07-13,1,1,2,lranshaw1@slideshare.net,lranshaw1,9.99,TARJETACREDITO,1
+2022-01-13,9,1,3,abockmann2@go.com,abockmann2,2.99,GIFT CARD,1
+2022-01-14,8,1,4,cdering3@cnbc.com,cdering3,2.99,DEPOSITO BANCARIO,0
+2022-01-15,1,1,5,gthewles4@behance.net,gthewles4,9.99,TARJETA DEBITO,0
+2022-01-16,9,1,6,krushworth5@microsoft.com,krushworth5,2.99,TARJETACREDITO,1
+2022-04-16,4,1,7,rgavey6@gmpg.org,rgavey6,4.99,GIFT CARD,1
+2022-04-08,10,1,8,amordacai7@usda.gov,amordacai7,14.99,DEPOSITO BANCARIO,1
+2022-12-29,5,1,9,nenriquez8@salon.com,nenriquez8,4.99,TARJETA DEBITO,1
+2023-12-28,4,1,10,bmcgovern9@ebay.com,bmcgovern9,4.99,TARJETACREDITO,1
+2023-02-24,3,1,11,gecclestona@hibu.com,gecclestona,4.99,GIFT CARD,1
+2024-01-08,1,1,12,ygiffonb@cbslocal.com,ygiffonb,9.99,DEPOSITO BANCARIO,0
+2022-09-05,10,1,13,cvanderkruijsc@scribd.com,cvanderkruijsc,14.99,TARJETA DEBITO,1
+2023-01-24,10,1,14,slambdend@123-reg.co.uk,slambdend,14.99,TARJETACREDITO,0
+2022-01-27,3,1,15,dshimwelle@slate.com,dshimwelle,4.99,GIFT CARD,1
+2023-05-20,2,1,16,xberrisfordf@uol.com.br,xberrisfordf,4.99,DEPOSITO BANCARIO,0
+2023-01-27,5,1,17,sthickg@homestead.com,sthickg,4.99,TARJETA DEBITO,1
+2023-03-22,5,1,18,nleafeh@infoseek.co.jp,nleafeh,4.99,TARJETACREDITO,1
+2022-10-24,2,1,19,csoali@pagesperso-orange.fr,csoali,4.99,GIFT CARD,0
+2022-07-15,10,1,20,cgrangerj@networksolutions.com,cgrangerj,14.99,DEPOSITO BANCARIO,0
+2024-02-19,9,1,21,ngilvaryk@ucoz.com,ngilvaryk,2.99,TARJETA DEBITO,1
+2022-02-23,3,1,22,idionsettol@smugmug.com,idionsettol,4.99,TARJETACREDITO,1
+2023-02-03,11,1,23,bdantuonim@tmall.com,bdantuonim,5.99,GIFT CARD,1
+2023-12-28,2,1,24,aledbettern@google.ca,aledbettern,4.99,DEPOSITO BANCARIO,0
+2023-02-13,4,1,25,ubroomero@blogger.com,ubroomero,4.99,TARJETA DEBITO,1
+2023-07-07,6,1,1,vodnik@hotmail.com.es,VodnikJavier,5.99,TARJETA DEBITO,1
+2024-03-02,9,1,2,lranshaw1@slideshare.net,lranshaw1,9.99,TARJETACREDITO,1
+2023-02-11,8,1,3,abockmann2@go.com,abockmann2,2.99,GIFT CARD,1
+2022-10-27,6,1,4,cdering3@cnbc.com,cdering3,2.99,DEPOSITO BANCARIO,0
+2022-03-08,4,1,5,gthewles4@behance.net,gthewles4,9.99,TARJETA DEBITO,0
+2023-01-08,3,1,6,krushworth5@microsoft.com,krushworth5,2.99,TARJETACREDITO,1
+2024-03-09,7,1,7,rgavey6@gmpg.org,rgavey6,4.99,GIFT CARD,1
+2023-12-21,5,1,8,amordacai7@usda.gov,amordacai7,14.99,DEPOSITO BANCARIO,1
+2022-04-27,6,1,9,nenriquez8@salon.com,nenriquez8,4.99,TARJETA DEBITO,1
+2024-03-05,3,1,10,bmcgovern9@ebay.com,bmcgovern9,4.99,TARJETACREDITO,1
+2022-09-05,10,1,11,gecclestona@hibu.com,gecclestona,4.99,GIFT CARD,1
+2024-03-08,7,1,,12,ygiffonb@cbslocal.com,ygiffonb,9.99,DEPOSITO BANCARIO,0
+2022-03-21,5,1,13,cvanderkruijsc@scribd.com,cvanderkruijsc,14.99,TARJETA DEBITO,1
+2023-02-13,4,1,14,slambdend@123-reg.co.uk,slambdend,14.99,TARJETACREDITO,0
+2023-05-19,8,1,15,dshimwelle@slate.com,dshimwelle,4.99,GIFT CARD,1
+2023-04-23,1,1,16,xberrisfordf@uol.com.br,xberrisfordf,4.99,DEPOSITO BANCARIO,0
+2022-05-31,1,1,17,sthickg@homestead.com,sthickg,4.99,TARJETA DEBITO,1
+2024-02-05,4,1,18,nleafeh@infoseek.co.jp,nleafeh,4.99,TARJETACREDITO,1
+2024-01-29,11,1,19,csoali@pagesperso-orange.fr,csoali,4.99,GIFT CARD,0
+2023-10-12,9,1,20,cgrangerj@networksolutions.com,cgrangerj,14.99,DEPOSITO BANCARIO,0
+2022-04-04,9,1,21,ngilvaryk@ucoz.com,ngilvaryk,2.99,TARJETA DEBITO,1
+2022-07-16,5,1,22,idionsettol@smugmug.com,idionsettol,4.99,TARJETACREDITO,1
+2023-11-14,8,1,23,bdantuonim@tmall.com,bdantuonim,5.99,GIFT CARD,1
+2024-04-26,3,1,24,aledbettern@google.ca,aledbettern,4.99,DEPOSITO BANCARIO,0
+2022-09-16,8,1,25,ubroomero@blogger.com,ubroomero,4.99,TARJETA DEBITO,1
+
