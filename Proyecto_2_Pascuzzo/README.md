@@ -113,7 +113,7 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 |-------------|-----------------|	-------:|
 |AMIGOS		|ID_AMIGO           |INT        |
 |           |ID_USER	        |INT		|
-|		    |NICK_AMIGO	        |VARCHAR(50)|
+|		    |NICK_AMIGO	        |VARCHAR(100)|
 |		    |CONECTADO	        |BOOLEAN	|
 
 |Tabla	      |Columna		|Tipo de Datos	|
