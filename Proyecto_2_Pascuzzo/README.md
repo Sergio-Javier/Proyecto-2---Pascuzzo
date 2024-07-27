@@ -190,3 +190,135 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 
 
 **[PARA VISUALIZAR MEJOR HACER CLICK AQUI](https://whimsical.com/der-autobattler-2bxqrFpQD5GyFNj2uwau9e)**
+
+# OBJETOS
+## Integración de objetos a sql
+* Listado de Vistas más una descripción detallada, su objetivo, y qué tablas las componen.
+* Listado de Funciones que incluyan una descripción detallada, el objetivo para la cual fueron creadas y qué datos o tablas manipulan y/o son implementadas.
+* Listado de Stored Procedures con una descripción detallada, qué objetivo o beneficio aportan al proyecto, y las tablas que lo componen y/o tablas con las que interactúa
+* Listado de Triggers
+
+### Documentacion de Vistas
+### Vista: 
+
+**Descripción:** 
+
+**Columnas:**
+
+* **:** 
+* **T:** 
+
+**Ejemplo de consulta:**
+
+```sql
+SELECT * FROM ReservasPorFecha
+WHERE Fecha BETWEEN '2010-12-01' AND '2023-12-31'
+ORDER BY Fecha ASC;
+```
+
+
+## Documentación de Funciones 
+
+### Función:
+
+**Descripción:** 
+
+**Parámetros:**
+
+* **:** 
+
+**:**
+
+* **T** , **FALSE** en caso contrario
+
+**Ejemplo de uso:**
+
+```sql
+SELECT mesa_cancelada(10);
+```
+
+**Nota:** 
+
+
+## Documentación de Triggers 
+
+### Trigger: after_insert_trigger
+
+**Descripción:** Este trigger registra la inserción de un nuevo cliente en la tabla LOG_CAMBIOS.
+
+**Detalles:**
+
+* **Tabla afectada:** CLIENTE
+* **Acción:** INSERT
+* **Información registrada:** Fecha, ID del cliente, Usuario
+
+**Ejemplo:**
+
+* Se inserta un nuevo cliente.
+* El trigger registra la acción en la tabla LOG_CAMBIOS con los detalles correspondientes.
+
+### Trigger: after_update_cancelacion_trigger
+
+**Descripción:** Este trigger registra la cancelación de una reserva en la tabla LOG_CAMBIOS.
+
+**Detalles:**
+
+* **Tabla afectada:** RESERVA
+* **Acción:** CANCELACION
+* **Información registrada:** Fecha, ID del cliente (si se conoce), Usuario
+
+**Ejemplo:**
+
+* Se actualiza una reserva para indicar su cancelación.
+* Si la cancelación no estaba presente antes, el trigger registra la acción en la tabla LOG_CAMBIOS.
+
+### Trigger: before_insert_cliente_trigger
+
+**Descripción:** Este trigger verifica si el correo electrónico de un nuevo cliente ya está en uso.
+
+**Detalles:**
+
+* **Tabla afectada:** CLIENTE
+* **Acción:** INSERT
+* **Validación:** Correo electrónico único
+
+**Ejemplo:**
+
+* Se intenta insertar un nuevo cliente con un correo electrónico ya registrado.
+* El trigger genera un error y la inserción no se realiza.
+
+### Trigger: before_insert_reserva_trigger
+
+**Descripción:** Este trigger verifica si un cliente ya tiene una reserva en la misma hora y mesa.
+
+**Detalles:**
+
+* **Tabla afectada:** RESERVA
+* **Acción:** INSERT
+* **Validación:** No se permiten reservas duplicadas en la misma hora y mesa para un mismo cliente.
+
+**Ejemplo:**
+
+* Se intenta reservar una mesa para un cliente que ya tiene una reserva en la misma hora y mesa.
+* El trigger genera un error y la reserva no se realiza.
+
+
+## Documentación de Procedimientos Almacenados
+
+### Procedimiento: 
+
+**Descripción:** 
+
+**Parámetros:**
+
+* **p_email:** Correo electrónico del cliente
+
+**Retorno:**
+
+* Mensaje de éxito o error
+
+**Ejemplo de uso:**
+
+```sql
+CALL actualizar_reserva_cancelada_por_email('ejemplo@correo.com');
+```
