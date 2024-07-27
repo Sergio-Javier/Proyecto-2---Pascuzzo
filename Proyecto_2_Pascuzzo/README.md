@@ -186,8 +186,7 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 
 ### DIAGRAMA ENTIDAD-RELACIÓN (DER)
 
-![image](https://github.com/Sergio-Javier/AUTOBATTLER-PASCUZZO/assets/173856047/54a2c8de-57e1-4bfd-920b-d04523bd4fe2)
-
+![image]![image](https://github.com/user-attachments/assets/0e193495-30cd-40df-a965-b89e1a2393f3)
 
 **[PARA VISUALIZAR MEJOR HACER CLICK AQUI](https://whimsical.com/der-autobattler-2bxqrFpQD5GyFNj2uwau9e)**
 
