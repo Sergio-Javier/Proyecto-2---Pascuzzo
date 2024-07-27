@@ -3,9 +3,9 @@
 <img src="https://media.gettyimages.com/id/157334670/es/foto/base-de-datos.jpg?s=612x612&w=gi&k=20&c=038JVeL8H1wTL7ZqaCW1e-ryH0GYtPbpZVOdUDQC55E=">
 _________________________________________________________________________________________________________________________________
 
-## Entrega primer proyecto
+## Entrega segundo proyecto
 ### **PRESENTACIÓN**
-[CLICK AQUÍ](https://docs.google.com/presentation/d/16O-zsWoQdSBcbjZN8IAhYMevG8TtxkO-h4BGcAlowJE/edit?usp=sharing)
+[CLICK AQUÍ](url)
 ### Pascuzzo Sergio Javier
 ### Comisión 57190
 ### Tutor: Ariel Annone
@@ -42,19 +42,19 @@ La base de datos está diseñada para el registro de nuevos usuarios, registro e
 
 - **USUARIO:**
 Almacena información sobre los usuarios al momento de registrarse e información relacionada al perfil de juego.
-*Atributos:* ID_USER, NOMBRE, APELLIDO, FECHA_NACIMIENTO, CORREO, PASSWORD, NICK, NIVEL_USER, PUNTOS_CLASIF, CONECTADO, ID_CONFIG, ID_USER_
+*Atributos:* ID_USER, NOMBRE, APELLIDO, FECHA_NACIMIENTO, CORREO, PASSWORD, NICK, NIVEL_USER, PUNTOS_CLASIF, CONECTADO
 
 - **CONFIGURACIÓN:**
 Registra el tipo de configuración seleccionada por el perfil, tiene valores predeterminados.
-*Atributos:* ID_CONFIG, NOMBRE_CONFIG, CONFIG_VIDEO, CONFIG_SONIDO, CONFIG_JUEGO
+*Atributos:* ID_CONFIG, NOMBRE_CONFIG, CONFIG_VIDEO, CONFIG_SONIDO, CONFIG_JUEGO, ID_USER
 
 - **AMIGOS:**
 Listado de otros usuarios agregados por al perfil del usuario principal, este permite visualizar si están conectados o no.
-*Atributos:* ID_USER_, NICK_AMIGO, CONECTADO
+*Atributos:* ID_AMIGO,ID_USER, NICK_AMIGO, AMIGO_CONECTADO
 
 - **PARTIDA:**
 Información necesaria para ingresar a la partida, y obtener información del estado de la misma al finalizar.
-*Atributos:* ID_SALA, TIEMPO_DE_PARTIDA, ID_MODO, ID_UNIDAD, ID_MISION, PUNTOS_CLASIF_OBTENIDO, NIVEL_EXP_OBTENIDO, ORO, NIVEL,PUNTOS_DE_VIDA
+*Atributos:* ID_SALA, TIEMPO_DE_PARTIDA, ID_MODO, ID_ESTADISTICA, ID_MISION
 
 - **ESTADISTICA:**
 Brinda información detallada de cada partida
@@ -62,7 +62,7 @@ Brinda información detallada de cada partida
 
 - **UNIDAD:**
 Las unidades son los personajes que se despliegan durante el juego, cada una con sus características correspondientes.
-*Atributos:* ID_UNIDAD, NOMBRE, COSTO, RANGO_PRINCIPAL, RANGO_SECUNDARIO, DAÑO, DEFENSA, VIDA
+*Atributos:* ID_UNIDAD, NOMBRE, COSTO, RASGO_PRINCIPAL, RASGO_SECUNDARIO, DANIO, DEFENSA, VIDA
 
 - **MODO_DE_JUEGO:**
 Contiene la información del tipo de juego a seleccionar, lo que brindara características según el tipo.
@@ -78,7 +78,7 @@ El usuario tendrá posibilidad de adquirir a cambio de un pago productos relacio
 
 - **FACTURA:**
 Se emitirá una factura luego de realizada una transacción entre el usuario y el juego, donde se le detallara su compra, costo y cobro de la misma.
-*Atributos:* ID_TRANSACCION, ID_PRODUCTO, ID_USER, EMAIL, NICK, CANTIDAD_PRODUCTO, TOTAL_PAGAR, MEDIO_DE_PAGO, COMPLETADO
+*Atributos:* ID_TRANSACCION, FECHA_DE_COMPRA,ID_PRODUCTO, CANTIDAD_PRODUCTO, ID_USER, EMAIL, NICK, TOTAL_PAGAR, MEDIO_DE_PAGO, COMPLETADO
 
 - **REGISTRO_DE_PARTIDA:**
 En ella se llevara el registro general de las partidas jugadas por el usuario, a fin de minimizar el acceso a información.
@@ -89,12 +89,12 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 | Tabla         | Columna           | Tipo de Datos                         |
 | ------------- | ----------------- |                                  ---: |
 | USUARIO       | ID_USER           | INT                                   |
-|               | NOMBRE            | VARCHAR(25)                           |
-|               | APELLIDO          | VARCHAR(25)                           |
+|               | NOMBRE            | VARCHAR(200)                           |
+|               | APELLIDO          | VARCHAR(200)                           |
 |               | FECHA_NACIMIENTO  | DATE                                  |
 |               | CORREO            | VARCHAR(100)                          |
-|               | PASSWORD          | VARCHAR(25)                           |
-|               | NICK              | VARCHAR(25)                           |
+|               | PASSWORD          | VARCHAR(50)                           |
+|               | NICK              | VARCHAR(50)                           |
 |               | NIVEL_USER        | INT                                   |
 |               | PUNTOS_CLASIF     | INT                                   |
 |               | CONECTADO         | BOOLEAN                               |
@@ -103,30 +103,32 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
 |CONFIGURACON |ID_CONFIG	|INT		|
-|	      |NOMBRE_CONFIG   |VARCHAR(25)	|
+|	      |NOMBRE_CONFIG   |VARCHAR(100)	|
 |	      |CONFIG_VIDEO	   |ENUM	|
 |	      |CONFIG_SONIDO	 |BOOLEAN	|
 |	      |CONFIG_JUEGO  	 |ENUM	|
+|         |ID_USER           |INT   |
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
-|AMIGOS		|ID_USER_	|INT		|
-|		|NICK_AMIGO	|VARCHAR(25)	|
-|		|CONECTADO	|BOOLEAN	|
+|AMIGOS		|ID_AMIGO           |INT        |
+|           |ID_USER	        |INT		|
+|		    |NICK_AMIGO	        |VARCHAR(50)|
+|		    |CONECTADO	        |BOOLEAN	|
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
 |MODO_DE_JUEGO	|ID_MODO	|INT	|
-|		|TIPO_MODO	|VARCHAR(25)	|
+|		|TIPO_MODO	|ENUM	|
 |		|GANA_NIVEL_EXP	|INT  |
 |		|GANA_PUNTOS_CLASIF	|INT  |
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
 |MISIONES	|ID_MISION	|INT		|
-|		|TIPO_DE_MISION	|VARCHAR(25)	|
-|		|TITULO		|VARCHAR(25)	|
-|		|DESCRIPCIÓN	|VARCHAR(100)	|
+|		|TIPO_DE_MISION	|ENUM	|
+|		|TITULO		|VARCHAR(100)	|
+|		|DESCRIPCIÓN	|VARCHAR(500)	|
 |		|RECOMPENSA	|VARCHAR(25)	|
 
 |Tabla	      |Columna		|Tipo de Datos	|
@@ -141,51 +143,46 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 |ESTADISTICA	|ID_ESTADISTICA	|INT	|
 |		|POSICION	|INT	|
 |		|NIVEL_ALCANZADO|INT(1)	|
-|		|UNIDADES_COMPRADAS|INT(1)|
+|		|UNIDADES_COMPRADAS|VARCHAR (255)|
 
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
 |UNIDAD		|ID_UNIDAD	|INT		|
-|		|NOMBRE		|VARCHAR(25)	|
+|		|NOMBRE		|VARCHAR(50)	|
 |		|COSTO		|ENUM		|
-|		|RANGO_PRINCIPAL|	VARCHAR(25)|
-|		|RANGO_SECUNDARIO|	VARCHAR(25)|
+|		|RASGO_PRINCIPAL|	VARCHAR(50)|
+|		|RASGO_SECUNDARIO|	VARCHAR(50)|
 |		|DAÑO		|INT		|
 |		|DEFENSA	|INT		|
 |		|VIDA		|INT		|
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
-|PARTIDA	|ID_SALA	|INT	|
-|	|ID_ESTADISTICA	|INT		|
-|	|ID_MODO	|INT		|
-|	|ID_UNIDAD	|INT		|
-|	|ID_MISION	|INT		|
-|	|PUNTOS_CLASIF_OBTENIDO	|INT	|
-|	|NIVEL_EXP_OBTENIDO	|INT	|
-|	|ORO		|INT		|
-|	|NIVEL		|INT		|
-|	|PUNTOS_DE_VIDA	|INT		|
-|	|TIEMPO_DE_PARTIDA	|TIME	|
+|PARTIDA	|ID_SALA	        |INT	    |
+|           |TIEMPO_DE_PARTIDA  |TIME       |
+|	        |ID_ESTADISTICA	    |INT		|
+|	        |ID_MODO	        |INT		|
+|	        |ID_MISION	        |INT		|
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
 |PRODUCTO	|ID_PRODUCTO	|INT		|
 |		|TIPO_PRODUCTO	|VARCHAR(50)	|
-|		|VALOR		|DECIMAL(5,2)	|
+|		|VALOR		|DECIMAL(6,2)	|
 
 |Tabla	      |Columna		|Tipo de Datos	|
 |-------------|-----------------|	-------:|
-|FACTURA	|ID_TRANSACCION	|INT		|
-|		|ID_PRODUCTO	|INT		|
-|		|ID_USER	|INT		|
-|		|EMAIL		|VARCHAR(100)	|
-|		|NICK		|VARCHAR(25)	|
-|		|CANTIDAD_PRODUCTO|	INT	|
-|		|TOTAL_PAGAR	|DECIMAL(5,2)	|
-|		|MEDIO_DE_PAGO	|VARCHAR(100)	|
-|		|COMPLETADO	|BOOLEAN	|
+|FACTURA	|ID_TRANSACCION	|INT		    |
+|           |FECHA_DE_COMPRA|DATETIME       |
+|		|ID_PRODUCTO	    |INT		    |
+|		|ID_USER	        |INT		|
+|		|EMAIL		        |VARCHAR(100)	|
+|		|NICK		        |VARCHAR(50)	|
+|		|CANTIDAD_PRODUCTO  |	INT	|
+|		|TOTAL_PAGAR	    |DECIMAL(6,2)	|
+|		|MEDIO_DE_PAGO	    |VARCHAR(100)	|
+|		|COMPLETADO	        |BOOLEAN	|
 
 ### DIAGRAMA ENTIDAD-RELACIÓN (DER)
 
