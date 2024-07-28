@@ -35,7 +35,7 @@ FROM
 GROUP BY
     u.ID_USER, u.NICK;
 
-    -- probar si vw funciona
+    -- prueba
 SELECT * FROM vw_user_count_party
 ORDER BY `ID_USER` ASC; 
 
