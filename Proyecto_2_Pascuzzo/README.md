@@ -259,15 +259,14 @@ ORDER BY `ID_USER` ASC;
 **Ejemplo de uso:**
 
 ```sql
-SELECT
-ID_REG,
-UNIDADES_COMPRADAS,
+SELECT 
+*,
 fn_nombre_unidades(UNIDADES_COMPRADAS) AS nombres_unidades
-FROM
-vw_date_reg;
+FROM vw_date_reg;
 ```
 
-**Nota: La función solo funciona si el dato que se introduce posee (x,y) donde x e y son numeros enteros, y se hayan separado por coma** 
+**Nota: La función solo funciona si el dato que se introduce posee (x,y) donde x e y son numeros enteros, y se hayan separado por coma. En este caso, utilizamos la vista creada anteriormente del registro de partidas, y aplicamos la funcion para poder visualizar 
+los nombres de las unidades, segun el dato obtenido de unidades compradas** 
 
 
 ## Documentación de Triggers 
