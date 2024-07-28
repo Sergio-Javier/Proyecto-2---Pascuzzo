@@ -249,8 +249,11 @@ ORDER BY `ID_USER` ASC;
 
 **Parámetros:**
 
-* *unidades_compradas VARCHAR(255)*:** 
+* *unidades_compradas VARCHAR(255)*:**
 
+**Retorno:**
+
+* *Convierte la lista de cadenas separada por comas, en una lista con los nomnres de las unidades, segun su numero id.*
 **:**
 
 **Ejemplo de uso:**
@@ -264,7 +267,7 @@ FROM
 vw_date_reg;
 ```
 
-**Nota:** 
+**Nota: La función solo funciona si el dato que se introduce posee (x,y) donde x e y son numeros enteros, y se hayan separado por coma** 
 
 
 ## Documentación de Triggers 
