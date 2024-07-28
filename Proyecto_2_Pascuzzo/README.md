@@ -113,7 +113,7 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 |-------------|-----------------|	-------:|
 |AMIGOS		|ID_AMIGO           |INT        |
 |           |ID_USER	        |INT		|
-|		    |NICK_AMIGO	        |VARCHAR(100)|
+|		    |NICK_AMIGO	        |VARCHAR(50)|
 |		    |CONECTADO	        |BOOLEAN	|
 
 |Tabla	      |Columna		|Tipo de Datos	|
@@ -186,7 +186,8 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 
 ### DIAGRAMA ENTIDAD-RELACIÓN (DER)
 
-![image]![image](https://github.com/user-attachments/assets/0e193495-30cd-40df-a965-b89e1a2393f3)
+![image](https://github.com/Sergio-Javier/AUTOBATTLER-PASCUZZO/assets/173856047/54a2c8de-57e1-4bfd-920b-d04523bd4fe2)
+
 
 **[PARA VISUALIZAR MEJOR HACER CLICK AQUI](https://whimsical.com/der-autobattler-2bxqrFpQD5GyFNj2uwau9e)**
 
@@ -200,19 +201,41 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 ### Documentacion de Vistas
 ### Vista: 
 
-**Descripción:** 
+**Descripción: Se desea crear una vista, para visualizar en una sola tabla, los registros de partida y a que jugador corresponde. Además, algun dato importante de la partida que podamos obtener de ese registro, sin tener que ir a ver el dato, tabla por tabla.**
 
 **Columnas:**
 
-* **:** 
-* **T:** 
+* *ID_REG*:*PERTENECIENTE A LA TABLA REGISTRO_DE_PARTIDA. ES UN TIPO INT, AUTOINCREMENTAL QUE COMIENZA A CONTAR A PARTIR DE 1000 PARA DIFERENCIAR DE OTROS ID* 
+
+* *NICK*:*PERTENECIENTE A LA TABLA USUARIO, DEL TIPO VARCHAR, INDICA LOS APODOS DE LOS JUGADORES*
+
+* *TIEMPO_DE_PARTIDA*:*PERTENECIENTE A LA TABLA PARTIDA, DEL TIPO TIME, INDICA LA DURACION DE LA PARTIDA* 
+
+* *UNIDADES_COMPRADAS*:*PERTENECIENTE A LA TABLA ESTADISTICAS, DEL TIPO VARCHAR, QUE INDICA UN LISTADO EN CADENA SEPARADO POR COMA LOS ID DE LAS UNIDADES UTILIZADAS EN LA PARTIDA* 
 
 **Ejemplo de consulta:**
 
 ```sql
-SELECT * FROM ReservasPorFecha
-WHERE Fecha BETWEEN '2010-12-01' AND '2023-12-31'
-ORDER BY Fecha ASC;
+SELECT * FROM vw_date_reg 
+ORDER BY `ID_REG` ASC;
+```
+
+**Descripción: Esta segunda vista, fue creada para controlar que jugadores tenian partidas registradas, y la cantidad de las mismas** 
+
+**Columnas:**
+
+* *ID_USER*:*PERTENECIENTE A LA TABLA USUARIO, DEL TIPO INT, INDICA EL ID AL QUE SE LE ASIGNO AL USUARIO AL REGISTRARSE * 
+
+* *NICK*:*PERTENECIENTE A LA TABLA USUARIO, DEL TIPO VARCHAR, INDICA LOS APODOS DE LOS JUGADORES*
+
+* *total_partidas*:*INDICA EL CONTEO SEGUN LA CANTIDAD DE ID_REG QUE POSEA CADA ID_USER* 
+
+**Ejemplo de consulta:**
+
+```sql
+SELECT * FROM vw_user_count_party
+WHERE total_partidas = 0
+ORDER BY `ID_USER` ASC;
 ```
 
 
@@ -220,20 +243,25 @@ ORDER BY Fecha ASC;
 
 ### Función:
 
-**Descripción:** 
+### Función: fn_nombre_unidades
+
+**Descripción: UTILIZADA PARA CONVERTIR LA LISTA EN CADENA SEPARADA POR COMAR DE LAS UNIDADES COMPRADAS PARA TOMAR ESE NUMERO, QUE ES DEL TIPO VARCHAR, Y CONCATENARLO CON EL ID DE LA UNIDAD, DE LA TABLA UNIDAD. SE CREA CON LA INTENCION DE FACILITAR LA VISTA DE LAS UNIDADES AL MOMENTO DE QUERER EJECUTAR, POR EJEMPLO LA VISTA vw_date_reg** 
 
 **Parámetros:**
 
-* **:** 
+* *unidades_compradas VARCHAR(255)*:** 
 
 **:**
-
-* **T** , **FALSE** en caso contrario
 
 **Ejemplo de uso:**
 
 ```sql
-SELECT mesa_cancelada(10);
+SELECT
+ID_REG,
+UNIDADES_COMPRADAS,
+fn_nombre_unidades(UNIDADES_COMPRADAS) AS nombres_unidades
+FROM
+vw_date_reg;
 ```
 
 **Nota:** 
