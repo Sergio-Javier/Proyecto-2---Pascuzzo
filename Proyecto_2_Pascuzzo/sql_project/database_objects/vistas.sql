@@ -22,7 +22,6 @@ ORDER BY `ID_REG` ASC;
 
 -- Segunda vista:
 -- contar cuantas patidas tiene cada usuario
-
 DROP VIEW IF EXISTS vw_user_count_party;
 CREATE VIEW vw_user_count_party AS
 SELECT
