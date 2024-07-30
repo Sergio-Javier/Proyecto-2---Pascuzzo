@@ -1,5 +1,8 @@
 USE AUTOBATTLER;
 -- Crea un registro cuando se ingrese un nuevo usuario
+DROP TABLE IF EXISTS LOG_CAMBIOS;
+DROP TRIGGER IF EXISTS after_insert_trigger;
+
 CREATE TABLE 
     LOG_CAMBIOS (
         id_log          INT NOT NULL AUTO_INCREMENT PRIMARY KEY

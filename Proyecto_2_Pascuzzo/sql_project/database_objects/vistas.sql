@@ -1,6 +1,6 @@
 USE AUTOBATTLER;
 
---Primer vista:
+-- Primer vista
 -- crear una vista para ver los datos de los usuarios y sus tiempos de partida
 -- y composiciones segun el registro de partidas
 DROP VIEW IF EXISTS vw_date_reg;
