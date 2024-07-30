@@ -1,26 +1,26 @@
-NOMBRE_CONFIG, CONFIG_VIDEO, CONFIG_SONIDO, CONFIG_JUEGO,ID_USER
-Config 1, 'BAJA',1, 'GAMEPAD',1
-Config 2, 'MEDIA',1, 'TOUCH',2
-Config 3, 'ALTA,0, 'KEYWOARD',3
-Config 4, 'MEDIA',1, 'GAMEPAD',4
-Config 5, 'BAJA',0, 'TOUCH',5
-Config Predeterminada, 'MEDIA',1, 'KEYWOARD',6
-Config 7, 'ALTA,0, 'GAMEPAD',7
-Config Predeterminada, 'MEDIA',1, 'KEYWOARD',8
-Config 9, 'BAJA',1, 'TOUCH',9
-Config 10,'MEDIA',1, 'GAMEPAD',10
-Config 11,'ALTA,0, 'KEYWOARD',11
-Config 12,'MEDIA',1, 'TOUCH',12
-Config 13,'BAJA',0, 'KEYWOARD',13
-Config 14,''MEDIA',1, 'GAMEPAD',14
-Config 15,'ALTA,1, 'TOUCH',15
-Config Predeterminada, 'MEDIA',1, 'KEYWOARD',16
-Config 17,'BAJA',0, 'GAMEPAD',17
-Config Pred'eterminada, 'MEDIA',1, 'KEYWOARD',18
-Config 19,'ALTA,1, 'TOUCH',19
-Config 20,'MEDIA',1, 'GAMEPAD',20
-Config 21,'BAJA',0, 'TOUCH',21
-Config Predeterminada, 'MEDIA',1, 'KEYWOARD',22
-Config 23,'ALTA,1, 'GAMEPAD',23
-Config 24,'MEDIA',1, 'TOUCH',24
-Config 25,'BAJA',0, 'KEYWOARD',25
+NOMBRE_CONFIG,CONFIG_VIDEO,CONFIG_SONIDO,CONFIG_JUEGO,ID_USER
+Config 1,'BAJA',1,'GAMEPAD',1
+Config 2,'MEDIA',1,'TOUCH',2
+Config 3,'ALTA,0,'KEYWOARD',3
+Config 4,'MEDIA',1,'GAMEPAD',4
+Config 5,'BAJA',0,'TOUCH',5
+Config Predeterminada,'MEDIA',1,'KEYWOARD',6
+Config 7,'ALTA,0,'GAMEPAD',7
+Config Predeterminada,'MEDIA',1,'KEYWOARD',8
+Config 9,'BAJA',1,'TOUCH',9
+Config 10,'MEDIA',1,'GAMEPAD',10
+Config 11,'ALTA,0,'KEYWOARD',11
+Config 12,'MEDIA',1,'TOUCH',12
+Config 13,'BAJA',0,'KEYWOARD',13
+Config 14,'MEDIA',1,'GAMEPAD',14
+Config 15,'ALTA,1,'TOUCH',15
+Config Predeterminada,'MEDIA',1,'KEYWOARD',16
+Config 17,'BAJA',0,'GAMEPAD',17
+Config Predeterminada,'MEDIA',1,'KEYWOARD',18
+Config 19,'ALTA,1,'TOUCH',19
+Config 20,'MEDIA',1,'GAMEPAD',20
+Config 21,'BAJA',0,'TOUCH',21
+Config Predeterminada,'MEDIA',1,'KEYWOARD',22
+Config 23,'ALTA,1,'GAMEPAD',23
+Config 24,'MEDIA',1,'TOUCH',24
+Config 25,'BAJA',0,'KEYWOARD',25
