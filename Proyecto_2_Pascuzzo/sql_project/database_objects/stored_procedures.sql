@@ -34,7 +34,7 @@ END //
 DELIMITER ;
 
 -- ejemplo, me tiene que dar vodnikjavier bronce
-CALL sp_rango_user(1, @p_nick, @p_nombre_rango, @puntos_clasif);
+CALL sp_rango_user(1, @p_nick, @p_nombre_rango);
 SELECT @p_nick AS Nick, 
        @p_nombre_rango AS Nombre_Rango;
 
