@@ -16,13 +16,13 @@ BEGIN
         SET p_nombre_rango = 'USUARIO NO ENCONTRADO';
     ELSE
         -- Determino los rangos segun los puntos
-        IF puntos_clasif BETWEEN '0' AND '9' THEN
+        IF puntos_clasif BETWEEN 0 AND 9 THEN
             SET p_nombre_rango = 'BRONCE';
-        ELSEIF puntos_clasif BETWEEN '10' AND '29' THEN
+        ELSEIF puntos_clasif BETWEEN 10 AND 29 THEN
             SET p_nombre_rango = 'PLATA';
-        ELSEIF puntos_clasif BETWEEN '30' AND '59' THEN
+        ELSEIF puntos_clasif BETWEEN 30 AND 59 THEN
             SET p_nombre_rango = 'ORO';
-        ELSEIF puntos_clasif BETWEEN '60' AND '89' THEN
+        ELSEIF puntos_clasif BETWEEN 60 AND 89 THEN
             SET p_nombre_rango = 'DIAMANTE';
         ELSEIF puntos_clasif >= 90 THEN
             SET p_nombre_rango = 'PLATINO';
