@@ -201,6 +201,7 @@ En ella se llevara el registro general de las partidas jugadas por el usuario, a
 ### Documentacion de Vistas
 ### Vista: 
 
+#### Vista : vw_date_reg 
 **Descripción: Se desea crear una vista, para visualizar en una sola tabla, los registros de partida y a que jugador corresponde. Además, algun dato importante de la partida que podamos obtener de ese registro, sin tener que ir a ver el dato, tabla por tabla.**
 
 **Columnas:**
@@ -220,6 +221,8 @@ SELECT * FROM vw_date_reg
 ORDER BY `ID_REG` ASC;
 ```
 
+
+#### Vista : vw_user_count_party
 **Descripción: Esta segunda vista, fue creada para controlar que jugadores tenian partidas registradas, y la cantidad de las mismas** 
 
 **Columnas:**
@@ -268,6 +271,8 @@ SELECT
 fn_nombre_unidades(UNIDADES_COMPRADAS) AS nombres_unidades
 FROM vw_date_reg;
 ```
+Nota: esta funcion se utilizo sobre una vista creada anteriormente, en caso de no crear o no ejecutar la vista, la funcion fn_nombre_unidades(UNIDADES_COMPRADAS) debe ser ejecutada desde ESTADISTICAS, o en caso de hacer un join entre la tabla PARTIDA y ESTADISTICA. Se especifica, ya que se sabe especificamente donde esta almacenado este tipo de dato, recuerde VARCHAR lista de cadenas separado por coma.
+
 
 ### Función: fn_convertir
 
