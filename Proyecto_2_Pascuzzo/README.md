@@ -233,11 +233,16 @@ ORDER BY `ID_REG` ASC;
 **Ejemplo de consulta:**
 
 ```sql
+    -- prueba
+SELECT * FROM vw_user_count_party
+ORDER BY `ID_USER` ASC;
+```
+```sql
+-- seleccionar los usuarios con 0 partidas (luego los usare para utilizar en otros objetos a crear)
 SELECT * FROM vw_user_count_party
 WHERE total_partidas = 0
 ORDER BY `ID_USER` ASC;
 ```
-
 
 ## Documentación de Funciones 
 
@@ -253,8 +258,7 @@ ORDER BY `ID_USER` ASC;
 
 **Retorno:**
 
-* *Convierte la lista de cadenas separada por comas, en una lista con los nomnres de las unidades, segun su numero id.*
-**:**
+**nombre_unidades*:*Convierte la lista de cadenas separada por comas en números, en una lista separada con comas con los nombres de las unidades, segun su numero id.*
 
 **Ejemplo de uso:**
 
@@ -265,41 +269,44 @@ fn_nombre_unidades(UNIDADES_COMPRADAS) AS nombres_unidades
 FROM vw_date_reg;
 ```
 
-**Nota: La función solo funciona si el dato que se introduce posee (x,y) donde x e y son numeros enteros, y se hayan separado por coma. En este caso, utilizamos la vista creada anteriormente del registro de partidas, y aplicamos la funcion para poder visualizar 
-los nombres de las unidades, segun el dato obtenido de unidades compradas** 
+### Función: fn_convertir
+
+**Descripción: UTILIZADA PARA CONVERTIR LOS VALORES DE LOS MONTOS TOTALES DELA FACTURA, CONSIDERADO EN DOLARES, A PESOS ARGENTINOS EN LA PROVIENCIA Y CIUDAD DE BUENOS AIRES.** 
+
+**Parámetros:**
+
+* *factura int*:*Parámetro de entrada, hace referencia al id de la factura a la que se quiere aplicar la funcion.*
+* *dolar_oficial float (6,2)*:*Parámetro de entrada, que se ingresará al llamar la función de acuerdo de cotizacon del dolar en el día.*
+
+**Retorno:**
+
+* *total_convertido*:*Devuelve un numero flotante*
+
+**Ejemplo de uso:**
+
+```sql
+SELECT fn_convertir (1,951) AS Monto_Argentino;
+```
+
+**Nota: Recordar, la primer variable corresponde al ID_TRANSACCION, de tabla FACTURA. El calculo sirve para el valor del dolar oficial indicado por el Banco Central de la Republica Argentina.** 
 
 
 ## Documentación de Triggers 
 
 ### Trigger: after_insert_trigger
 
-**Descripción:** Este trigger registra la inserción de un nuevo cliente en la tabla LOG_CAMBIOS.
+**Descripción:** Este trigger registra la inserción de un nuevo usuario en la tabla LOG_CAMBIOS.
 
 **Detalles:**
 
-* **Tabla afectada:** CLIENTE
+* **Tabla afectada:** USUARIO
 * **Acción:** INSERT
-* **Información registrada:** Fecha, ID del cliente, Usuario
+* **Información registrada:** Fecha, ID del usuario, Usuario que realiza la inserccion
 
 **Ejemplo:**
 
-* Se inserta un nuevo cliente.
+* Se inserta un nuevo usuario.
 * El trigger registra la acción en la tabla LOG_CAMBIOS con los detalles correspondientes.
-
-### Trigger: after_update_cancelacion_trigger
-
-**Descripción:** Este trigger registra la cancelación de una reserva en la tabla LOG_CAMBIOS.
-
-**Detalles:**
-
-* **Tabla afectada:** RESERVA
-* **Acción:** CANCELACION
-* **Información registrada:** Fecha, ID del cliente (si se conoce), Usuario
-
-**Ejemplo:**
-
-* Se actualiza una reserva para indicar su cancelación.
-* Si la cancelación no estaba presente antes, el trigger registra la acción en la tabla LOG_CAMBIOS.
 
 ### Trigger: before_insert_cliente_trigger
 
@@ -316,38 +323,34 @@ los nombres de las unidades, segun el dato obtenido de unidades compradas**
 * Se intenta insertar un nuevo cliente con un correo electrónico ya registrado.
 * El trigger genera un error y la inserción no se realiza.
 
-### Trigger: before_insert_reserva_trigger
-
-**Descripción:** Este trigger verifica si un cliente ya tiene una reserva en la misma hora y mesa.
-
-**Detalles:**
-
-* **Tabla afectada:** RESERVA
-* **Acción:** INSERT
-* **Validación:** No se permiten reservas duplicadas en la misma hora y mesa para un mismo cliente.
-
-**Ejemplo:**
-
-* Se intenta reservar una mesa para un cliente que ya tiene una reserva en la misma hora y mesa.
-* El trigger genera un error y la reserva no se realiza.
-
 
 ## Documentación de Procedimientos Almacenados
 
-### Procedimiento: 
+### Procedimiento: sp_rango_user
 
-**Descripción:** 
+**Descripción: Le asigna un nombre de rango a al usuario seleccionado segun su puntaje de clasificacion.** 
 
 **Parámetros:**
 
-* **p_email:** Correo electrónico del cliente
-
-**Retorno:**
-
-* Mensaje de éxito o error
+* *p_id_user : Parámetro IN del tipo INT, donde se introduce el numero de ID_USER de la tabla USUARIO.*
+* *p_nick : Parámetro OUT del tipo VARCHAR. Se declara como variable @p_nick*
+* *p_nombre_rango : Parámetro del tipo VARCHAR. Se declara como variable @p_nombre_rango*
+   
+**Retorno: @p_nick, @p_nombre_rango, ambos del tipo VARCHAR, que corresponden al nick del usuario y alrango asignado segun su puntaje, respectivamente.**
 
 **Ejemplo de uso:**
 
 ```sql
-CALL actualizar_reserva_cancelada_por_email('ejemplo@correo.com');
+-- valor esperado: VodnikJavier, BRONCE
+CALL sp_rango_user(1, @p_nick, @p_nombre_rango);
+SELECT @p_nick AS Nick,
+       @p_nombre_rango AS Nombre_Rango;
 ```
+```sql
+-- valor esperado: msj usuario no encontrado
+CALL sp_rango_user(30, @p_nick, @p_nombre_rango);
+SELECT @p_nick AS Nick,
+       @p_nombre_rango AS Nombre_Rango;
+```
+Nota: El parametro de entrada es un numero entero, y solo se puede modificar ese parametro, los nombres de los parametros de salida no pueden ser modificados hasta que no se altere el procedimiento. Luego de ejecutar el procedimiento se debe seleccionar a las variables, ya que alli queda guardada la informacion, si se puede renombrar (AS) estas variables para poder ver el nombre del registro.
+**No funciona** con mas de un numero ingresado a la vez. Se debe hacer uno por uno.  
