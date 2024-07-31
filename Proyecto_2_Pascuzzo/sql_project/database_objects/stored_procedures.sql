@@ -1,6 +1,7 @@
 USE AUTOBATTLER;
 
 DROP PROCEDURE IF EXISTS sp_rango_user;
+
 DELIMITER //
 
 CREATE PROCEDURE sp_rango_user(IN p_id_user INT, OUT p_nick VARCHAR(100), OUT p_nombre_rango VARCHAR(50))
@@ -33,9 +34,5 @@ END //
 
 DELIMITER ;
 
--- ejemplo, me tiene que dar vodnikjavier bronce, si pongo un numero mayor a 25 me da el msj
-CALL sp_rango_user(24, @p_nick, @p_nombre_rango);
-SELECT @p_nick AS Nick,
-       @p_nombre_rango AS Nombre_Rango;
 
 
