@@ -33,7 +33,7 @@ END //
 
 DELIMITER ;
 
--- ejemplo, me tiene que dar vodnikjavier bronce
+-- ejemplo, si pongo 1 me tiene que dar vodnikjavier bronce, si pongo mas de 26 me tiene que tirar msj
 CALL sp_rango_user(1, @p_nick, @p_nombre_rango);
 SELECT @p_nick AS Nick, 
        @p_nombre_rango AS Nombre_Rango;
