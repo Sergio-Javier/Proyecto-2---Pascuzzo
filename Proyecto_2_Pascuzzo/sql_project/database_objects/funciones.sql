@@ -2,6 +2,8 @@ USE AUTOBATTLER;
 
 -- BORRA LAS FUNCIONES SI ES QUE YA EXISTEN
 DROP FUNCTION IF EXISTS fn_nombre_unidades;
+DROP FUNCTION IF EXISTS fn_convertir;
+
 -- PRIMERA FUNCION: UTILIZADA, PARA CONVERTIR LA LISTA EN CADENA SEPARADA POR COMAR DE LAS UNIDADES COMPRADAS
 -- PARA TOMAR ESE NUMERO, QUE ES DEL TIPO VARCHAR, Y CONCATENARLO CON EL ID DE LA UNIDAD, DE LA TABLA UNIDAD.
 DELIMITER //
@@ -39,5 +41,43 @@ BEGIN
 
     RETURN nombre_unidades;
 END //
+
+DELIMITER ;
+
+-- FUNCION PARA CONVERTIR EL VALOR DEL TOTAL A PAGAR DE LA FACTURA SELECCIONADA, CONSIDERADO EN DOLAR, SEGÚN EL VALOR OFICIAL EN PESOS
+-- ARGENTINOS, EN LA CIUDAD Y PROVINCIA DE BUENOS AIRES
+DELIMITER //
+CREATE FUNCTION fn_convertir (factura int, dolar_oficial float (6,2)) RETURNS float(6,2)
+DETERMINISTIC
+	BEGIN
+			DECLARE imp_pais FLOAT(6,2);
+			DECLARE iva FLOAT(6,2);
+			DECLARE ganancias FLOAT(6,2);
+			DECLARE IIBB FLOAT (6,2);
+			DECLARE imp_dig FLOAT (6,2);
+			DECLARE dolar_a_conv FLOAT(6,2);
+			DECLARE conv_oficial FLOAT (6,2);
+			DECLARE total_convertido FLOAT (6,2);
+            
+				SELECT
+				f.ID_TRANSACCION, f.TOTAL_PAGAR INTO factura, dolar_a_conv
+				FROM
+				FACTURA AS f;
+			
+			SET imp_pais = 0.08;
+			SET iva = 0.21;
+			SET ganancias = 0.3;
+			SET IIBB = 0.02;
+			SET imp_dig = 0.21;
+			SET conv_oficial = 	((dolar_oficial * 0.1) + dolar_oficial) * dolar_a_conv;
+			
+			SET total_convertido = conv_oficial
+			+ (conv_oficial * imp_pais)
+			+ (conv_oficial * iva)
+			+ (conv_oficial * ganancias)
+			+ (conv_oficial * IIBB);
+			
+		RETURN total_convertido;
+		END //
 
 DELIMITER ;
