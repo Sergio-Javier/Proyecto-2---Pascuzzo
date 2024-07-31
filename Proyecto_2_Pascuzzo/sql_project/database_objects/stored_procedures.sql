@@ -18,11 +18,11 @@ BEGIN
         -- Determino los rangos segun los puntos
         IF puntos_clasif BETWEEN 0 AND 9 THEN
             SET p_nombre_rango = 'BRONCE';
-        ELSEIF puntos_clasif BETWEEN 10 AND 29 THEN
+        ELSEIF puntos_clasif BETWEEN '10' AND '29' THEN
             SET p_nombre_rango = 'PLATA';
-        ELSEIF puntos_clasif BETWEEN 30 AND 59 THEN
+        ELSEIF puntos_clasif BETWEEN '30' AND '59' THEN
             SET p_nombre_rango = 'ORO';
-        ELSEIF puntos_clasif BETWEEN 60 AND 89 THEN
+        ELSEIF puntos_clasif BETWEEN '60' AND '89' THEN
             SET p_nombre_rango = 'DIAMANTE';
         ELSEIF puntos_clasif >= 90 THEN
             SET p_nombre_rango = 'PLATINO';
@@ -33,10 +33,8 @@ END //
 
 DELIMITER ;
 
--- ejemplo, si pongo 1 me tiene que dar vodnikjavier bronce, si pongo mas de 26 me tiene que tirar msj
-SET '@p_nik' = 0
-SET '@p_nombre_rango' = ''
-CALL sp_rango_user(1, @p_nick, @p_nombre_rango);
+-- ejemplo, me tiene que dar vodnikjavier bronce
+CALL sp_rango_user(3, @p_nick, @p_nombre_rango);
 SELECT @p_nick AS Nick, 
        @p_nombre_rango AS Nombre_Rango;
 
