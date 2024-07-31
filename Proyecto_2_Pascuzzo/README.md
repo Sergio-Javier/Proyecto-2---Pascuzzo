@@ -313,20 +313,20 @@ SELECT fn_convertir (1,951) AS Monto_Argentino;
 * Se inserta un nuevo usuario.
 * El trigger registra la acción en la tabla LOG_CAMBIOS con los detalles correspondientes.
 
-### Trigger: before_insert_cliente_trigger
+### Trigger: before_delete_trigger
 
-**Descripción:** Este trigger verifica si el correo electrónico de un nuevo cliente ya está en uso.
+**Descripción:** Este trigger registra la eliminacion de un usuario en la tabla LOG_CAMBIOS y guarda datos del mismo.
 
 **Detalles:**
 
-* **Tabla afectada:** CLIENTE
-* **Acción:** INSERT
-* **Validación:** Correo electrónico único
+* **Tabla afectada:** USUARIO
+* **Acción:** DELETE
+* **Información registrada:** Fecha, ID_USER, NICK, PASSWORD, Usuario que realiza el delete.
 
 **Ejemplo:**
 
-* Se intenta insertar un nuevo cliente con un correo electrónico ya registrado.
-* El trigger genera un error y la inserción no se realiza.
+* Se elimina un usuario.
+* El trigger copia en la tabla LOG, el evento, y guarda datos del usuario, en caso de ser necesario volver a identificar.
 
 
 ## Documentación de Procedimientos Almacenados
@@ -358,4 +358,22 @@ SELECT @p_nick AS Nick,
        @p_nombre_rango AS Nombre_Rango;
 ```
 Nota: El parametro de entrada es un numero entero, y solo se puede modificar ese parametro, los nombres de los parametros de salida no pueden ser modificados hasta que no se altere el procedimiento. Luego de ejecutar el procedimiento se debe seleccionar a las variables, ya que alli queda guardada la informacion, si se puede renombrar (AS) estas variables para poder ver el nombre del registro.
-**No funciona** con mas de un numero ingresado a la vez. Se debe hacer uno por uno.  
+**No funciona** con mas de un numero ingresado a la vez. Se debe hacer uno por uno.
+
+### Procedimiento: delete_user 
+
+**Descripción: Borra automaticamente el usuario seleccionado con su id** 
+
+**Parámetros:**
+
+* *d_id_user  : Parámetro IN del tipo INT, donde se introduce el numero de ID_USER de la tabla USUARIO.*
+   
+**Retorno*:*Si ejecuta o no la tarea trae un mensaje, de acuerdo a la accion final*
+
+**Ejemplo de uso:**
+
+```sql
+-- Anteriormente, se presento una vista, que trae aquellos usuarios que no tienen registro de partidas, con sus id respectivos, podemos usar estos id que nos da la view, e insertar uno por uno los usuarios a eliminar. En caso de tener que incorporar estos registros borrados, los tenemos en nuestra tabla LOG_CAMBIOS
+call delete_user(30);
+```
+Nota: el parametro a ingresar es un INT.
