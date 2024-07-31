@@ -63,7 +63,8 @@ DETERMINISTIC
 				f.ID_TRANSACCION, f.TOTAL_PAGAR INTO factura, dolar_a_conv
 				FROM
 				FACTURA AS f;
-			
+				WHERE ID_TRANSACCION = factura;
+
 			SET imp_pais = 0.08;
 			SET iva = 0.21;
 			SET ganancias = 0.3;
