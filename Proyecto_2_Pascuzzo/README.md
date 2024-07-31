@@ -373,7 +373,7 @@ Nota: El parametro de entrada es un numero entero, y solo se puede modificar ese
 **Ejemplo de uso:**
 
 ```sql
--- Anteriormente, se presento una vista, que trae aquellos usuarios que no tienen registro de partidas, con sus id respectivos, podemos usar estos id que nos da la view, e insertar uno por uno los usuarios a eliminar. En caso de tener que incorporar estos registros borrados, los tenemos en nuestra tabla LOG_CAMBIOS
+-- Anteriormente, se presento una vista vw_user_count_party, que trae aquellos usuarios que no tienen registro de partidas, con sus id respectivos, podemos usar estos id que nos da la view, e insertar uno por uno los id a eliminar. En caso de tener que incorporar estos registros borrados, los tenemos en nuestra tabla LOG_CAMBIOS
 call delete_user(30);
 ```
 Nota: el parametro a ingresar es un INT.
