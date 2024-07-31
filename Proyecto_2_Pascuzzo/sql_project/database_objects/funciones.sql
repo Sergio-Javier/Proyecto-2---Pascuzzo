@@ -58,13 +58,13 @@ DETERMINISTIC
 			DECLARE dolar_a_conv FLOAT(6,2);
 			DECLARE conv_oficial FLOAT (6,2);
 			DECLARE total_convertido FLOAT (6,2);
-            
+        -- selecciono de donde vendran las variable de entrada
 				SELECT
 				f.ID_TRANSACCION, f.TOTAL_PAGAR INTO factura, dolar_a_conv
 				FROM
 				FACTURA AS f;
 				WHERE ID_TRANSACCION = factura;
-
+	-- creo las variables dentro de la funcion
 			SET imp_pais = 0.08;
 			SET iva = 0.21;
 			SET ganancias = 0.3;
