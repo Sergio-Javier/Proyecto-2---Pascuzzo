@@ -49,7 +49,7 @@ DELIMITER ;
 -- FUNCION PARA CONVERTIR EL VALOR DEL TOTAL A PAGAR DE LA FACTURA SELECCIONADA, CONSIDERADO EN DOLAR, SEGÚN EL VALOR OFICIAL EN PESOS
 -- ARGENTINOS, EN LA CIUDAD Y PROVINCIA DE BUENOS AIRES
 DELIMITER //
-CREATE FUNCTION fn_convertir (factura int, dolar_oficial float (6,2)) RETURNS float(6,2)
+CREATE FUNCTION fn_convertir (id_factura int, dolar_oficial float (6,2)) RETURNS float(6,2)
 DETERMINISTIC
 	BEGIN
 			DECLARE imp_pais FLOAT(6,2);
@@ -62,10 +62,10 @@ DETERMINISTIC
 			DECLARE total_convertido FLOAT (6,2);
         -- selecciono de donde vendran las variable de entrada
 				SELECT
-				f.ID_TRANSACCION, f.TOTAL_PAGAR INTO factura, dolar_a_conv
+				f.ID_TRANSACCION, f.TOTAL_PAGAR INTO id_factura, dolar_a_conv
 				FROM
-				FACTURA AS f;
-				WHERE ID_TRANSACCION = factura;
+				FACTURA AS f
+				WHERE ID_TRANSACCION = id_factura;
 	-- creo las variables dentro de la funcion
 			SET imp_pais = 0.08;
 			SET iva = 0.21;
