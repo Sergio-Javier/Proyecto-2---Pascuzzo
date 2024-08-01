@@ -5,7 +5,7 @@ ________________________________________________________________________________
 
 ## Entrega segundo proyecto
 ### **PRESENTACIÓN**
-[CLICK AQUÍ](url)
+[CLICK AQUÍ]([url](https://docs.google.com/presentation/d/16O-zsWoQdSBcbjZN8IAhYMevG8TtxkO-h4BGcAlowJE/edit?usp=sharing))
 ### Pascuzzo Sergio Javier
 ### Comisión 57190
 ### Tutor: Ariel Annone
